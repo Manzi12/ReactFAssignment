@@ -9,18 +9,60 @@ const SignUpPage = () => (
     </div>
 );
 
+const initialState = {
+    username:'',
+    email: '',
+    password: ''
+};
+
 class SignUpForm extends Component {
     constructor(props){
         super(props);
+        this.state = {...initialState};
     }
+
+    onChange = event => {
+        this.setState({[event.target.name]: event.target.value})
+    };
 
     onSubmit = event => {
 
     }
 
+
+
     render(){
+        const {
+            username,
+            email,
+            password
+        } = this.state;
+
         return(
             <form onSubmit = {this.onSubmit}>
+                <input
+                name = "username"
+                value={username}
+                onChange = {this.onChange}
+                type = "text"
+                placeholder = "Full Name"
+                />
+                 <input
+                name = "email"
+                value={email}
+                onChange = {this.onChange}
+                type = "text"
+                placeholder = "Email Address"
+                />
+                 <input
+                name = "password"
+                value={password}
+                onChange = {this.onChange}
+                type = "password"
+                placeholder = "Password"
+                />
+
+                <button type="submit">Sign Up</button>
 
             </form>
         );
