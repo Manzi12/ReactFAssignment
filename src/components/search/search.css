@@ -30,3 +30,37 @@
     cursor: pointer;
     font-size: 18px;
     }
+
+
+    .SearchFormForm {
+        background-color: #979696;
+        text-align: center;
+        background-color: #979696;
+        min-height: 50vh;
+        display: flex;
+       
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: calc(10px + 2vmin);
+        color: rgb(187, 50, 50);
+      }
+      
+      
+      
+      .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+      }
+      
+      
+      .heading {
+        margin-top:3.5em;
+        text-align: center;
+        
+      }
+      
+      .background {
+        background-color: #17a817;
+        min-height: 300vh;
+      }
