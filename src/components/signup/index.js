@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
-);
+// const SignUpPage = () => (
+//     <div>
+//         <h1>SignUp</h1>
+//         <SignUpForm />
+//     </div>
+// );
 
 const initialState = {
     username:'',
@@ -39,6 +39,11 @@ class SignUpForm extends Component {
         } = this.state;
 
         return(
+            <div>
+                <h1>Sign up for the account</h1>
+                <p>If you have no account please signup to use our private search</p>
+
+            
             <form onSubmit = {this.onSubmit}>
                 <input
                 name = "username"
@@ -65,6 +70,8 @@ class SignUpForm extends Component {
                 <button type="submit">Sign Up</button>
 
             </form>
+
+            </div>
         );
         
     }
