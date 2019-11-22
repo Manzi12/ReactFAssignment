@@ -67,7 +67,7 @@ class Search extends Component {
               <Card.Body>
                 <Card.Title>{hotel.name}</Card.Title>
               </Card.Body>
-              <Button variant="primary">View More Information</Button>
+              <Button href={hotel.url} variant="primary">View More Information</Button>
             </card>
           </CardDeck>
         </div>

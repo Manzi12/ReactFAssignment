@@ -5,7 +5,7 @@ import search from "../search/";
 export default class resultList extends Component {
   render() {
     const hotelCards = this.props.searchResults.map(hotel => (
-      <search key={hotel.name} search={hotel} />
+      <search key={hotel.name} />
     ));
     return (
       <div className="container-fluid hotels bg-info">
