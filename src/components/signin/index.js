@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fire from '../../config/fire';
 //import { withRouter } from 'react-router-dom';
 //import { Link} from 'react-router-dom';
 
@@ -11,10 +12,21 @@ const initialState = {
 class SignIn extends Component {
     constructor(props){
         super(props);
+        this.login = this.login.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {...initialState};
     }
 
-    onChange = event => {
+
+    login(e){
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u) =>{
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    handleChange = event => {
         this.setState({[event.target.name]: event.target.value})
     };
 
