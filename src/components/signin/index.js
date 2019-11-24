@@ -13,7 +13,7 @@ class SignIn extends Component {
     constructor(props){
         super(props);
         this.login = this.login.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.state = {...initialState};
     }
 
@@ -26,7 +26,7 @@ class SignIn extends Component {
         });
     }
 
-    handleChange = event => {
+    onChange = event => {
         this.setState({[event.target.name]: event.target.value})
     };
 
