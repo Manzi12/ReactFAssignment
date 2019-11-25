@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , withRouter } from 'react-router-dom';
+//import SignIn from '../signin';
 
 
 // const SignUpPage = () => (
@@ -26,8 +27,17 @@ class SignUpForm extends Component {
     };
 
     onSubmit = event => {
+    event.preventDefault();
+    const { username, email, password } = this.state;
 
-    }
+    this.props.firebase
+      .signUpNewUserWithEmailAndPassword(email, password)
+      .then(authUser => {
+        this.setState({ ...initialState });
+        this.props.history.push("/searchResults");
+      })
+      .catch(error => console.log(error));
+  };
 
 
 
@@ -40,8 +50,10 @@ class SignUpForm extends Component {
 
         return(
             <div>
+
                 <h1>Sign up for the account</h1>
                 <p>If you have no account please signup to use our private search</p>
+                {/* <Link to="/SignIn"><p>Already have an account</p></Link> */}
 
             
             <form onSubmit = {this.onSubmit}>
@@ -76,5 +88,6 @@ class SignUpForm extends Component {
         
     }
 }
+
 
 export default SignUpForm;

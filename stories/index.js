@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Home from '../src/components/home';
 import Search from '../src/components/search';
-import resultsList from '../src/components/resultsList'
+import ResultsList from '../src/components/resultsList';
 import SignUpForm from '../src/components/signup';
 import SignIn from '../src/components/signin';
 
@@ -31,6 +31,6 @@ storiesOf("SignIn/SignIn",module).add("default",() => (
 ));
 
 storiesOf("resultsList/resultsList",module).add("default",() => (
-    <resultsList searchResults = {searchResults} />
+    <ResultsList searchResults = {searchResults} />
 ));
 
