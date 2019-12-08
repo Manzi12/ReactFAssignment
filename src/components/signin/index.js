@@ -19,13 +19,13 @@ class SignIn extends Component {
     }
 
 
-    login(e){
-        e.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u) =>{
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
+    // login(e){
+    //     e.preventDefault();
+    //     firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u) =>{
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });
+    // }
 
     onChange = event => {
         this.setState({[event.target.name]: event.target.value})
