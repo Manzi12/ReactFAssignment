@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Link , withRouter } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { withRouter } from 'react-router-dom';
+import app from '../../config/firebase';
 //import SignIn from '../signin';
 
 
@@ -10,43 +11,62 @@ import { Link , withRouter } from 'react-router-dom';
 //     </div>
 // );
 
-const initialState = {
-    username:'',
-    email: '',
-    password: ''
-};
-
-class SignUpForm extends Component {
-    constructor(props){
-        super(props);
-        this.state = {...initialState};
-    }
-
-    onChange = event => {
-        this.setState({[event.target.name]: event.target.value})
-    };
-
-    onSubmit = event => {
-    event.preventDefault();
-    const { username, email, password } = this.state;
-
-    this.props.firebase
-      .signUpNewUserWithEmailAndPassword(email, password)
-      .then(authUser => {
-        this.setState({ ...initialState });
-        this.props.history.push("/searchResults");
-      })
-      .catch(error => console.log(error));
-  };
+const SignUp = ({history}) => {
+    const handleSignUp = useCallback(async event =>{
+        event.preventDefault();
+        const { email,password} = event.target.elements;
+        try {
+            await app 
+            .auth()
+            .createUserWithEmailAndPassword(email.value,password.value);
+            history.push("/");
+        } catch (error){
+            alert(error);
+        }
+    },[history]);
 
 
+    
+    
 
-    render(){
-        const {
-            username,
-            email,
-            password
-        } = this.state;
+
+// const initialState = {
+//     username:'',
+//     email: '',
+//     password: ''
+// };
+
+// class SignUpForm extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {...initialState};
+//     }
+
+//     onChange = event => {
+//         this.setState({[event.target.name]: event.target.value})
+//     };
+
+//     onSubmit = event => {
+//     event.preventDefault();
+//     const { username, email, password } = this.state;
+
+//     this.props.firebase
+//       .signUpNewUserWithEmailAndPassword(email, password)
+//       .then(authUser => {
+//         this.setState({ ...initialState });
+//         this.props.history.push("/searchResults");
+//       })
+//       .catch(error => console.log(error));
+//   };
+
+
+
+//     render(){
+//         const {
+//             username,
+//             email,
+//             password
+//         } = this.state;
 
         return(
             <div>
@@ -56,15 +76,20 @@ class SignUpForm extends Component {
                 {/* <Link to="/SignIn"><p>Already have an account</p></Link> */}
 
             
-            <form onSubmit = {this.onSubmit}>
-                <input
-                name = "username"
+            <form onSubmit = {handleSignUp}>
+                <label>Username</label>
+                <input name="username" type="username" placeholder="Full Name" />
+                <label>Email</label>
+                <input name="email" type="email" placeholder="Email" />
+                <label>Password</label>
+                <input name="password" type="password" placeholder="Password" />
+                {/* name = "username"
                 value={username}
                 onChange = {this.onChange}
                 type = "text"
                 placeholder = "Full Name"
-                />
-                 <input
+                /> */}
+                 {/* <input
                 name = "email"
                 value={email}
                 onChange = {this.onChange}
@@ -77,7 +102,7 @@ class SignUpForm extends Component {
                 onChange = {this.onChange}
                 type = "password"
                 placeholder = "Password"
-                />
+                /> */}
 
                 <button type="submit">Sign Up</button>
 
@@ -87,7 +112,6 @@ class SignUpForm extends Component {
         );
         
     }
-}
 
-
-export default SignUpForm;
+export default withRouter(SignUp);
+//export default SignUpForm;

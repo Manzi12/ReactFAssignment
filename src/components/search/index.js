@@ -117,6 +117,7 @@ class Search extends Component {
 
 
         {hotelSearchResults}
+        
         </div>
         </div>
       </Fragment>
