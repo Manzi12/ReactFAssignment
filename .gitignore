@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -25,6 +26,8 @@ yarn-error.log*
 # dotenv environment variables file
 .env
 =======
+=======
+>>>>>>> 278b56ff1b100f47f142ab69c2f9adeaa0451f5b
 # Logs
 logs
 *.log
@@ -129,4 +132,7 @@ dist
 
 # TernJS port file
 .tern-port
+<<<<<<< HEAD
 >>>>>>> 586d2c67a0e12c2b59a88ffe70b645194cf7b452
+=======
+>>>>>>> 278b56ff1b100f47f142ab69c2f9adeaa0451f5b

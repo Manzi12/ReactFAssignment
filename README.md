@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BSc (Hons.) Level 8 - Assignment 1 - Single Page app.
 
 Name: Manzi Joseph
@@ -56,3 +57,7 @@ once you sign in
 
 
 
+=======
+# ReactFAssignment
+react first assignmet
+>>>>>>> 278b56ff1b100f47f142ab69c2f9adeaa0451f5b
