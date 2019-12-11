@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Col } from "react-bootstrap";
 import './search.css'
+import buttons from "../config/buttonsConfig";
 import axios from 'axios';
 import { Form,CardDeck,Card,Button} from "react-bootstrap";
 
@@ -19,6 +20,39 @@ class Search extends Component {
     super(props);
         this.state = { ...initialState};
     }
+
+    // state = {
+    //   status : "",
+    //   name : this.props.search.name,
+    //   previousDetails: {
+    //     name : this.props.search.name
+    //   }
+    // };
+
+    // handleEdit =() => this.setState({status:"Edit"});
+    // handleCancel = () => {
+    //   let name = this.state.previousDetails;
+    //   this.setState({status : " ",name});
+    // };
+
+    // handleSave = e => {
+    //   e.preventDefault();
+    //   let updatedName = this.state.name.trim();
+    //   if(! updatedName){
+    //     return;
+    //   }
+    //   let name = this.state;
+    //   this.setState({status:" ",previousDetails: name});
+    // };
+
+    // handleDelete = () => this.state({status : 'Del'});
+    // handleConfirm = (e) => {
+    //   e.preventDefault();
+    //   this.props.deleteHandler(this.state.name);
+    // };
+
+    // handleNameChange = e => this.setState({name : e.target.value});
+
 
     handleSearch = event => {
         event.preventDefault();
@@ -56,6 +90,22 @@ class Search extends Component {
   
   
   render() {
+    // let activeButtons = buttons.normal;
+    // let leftButtonHandler = this.handleEdit;
+    // let rightButtonHandler = this.handleDelete;
+    // let cardColor = "bg-white";
+
+    // if(this.state.status === "Edit"){
+    //   cardColor = "bg-primary";
+    //   activeButtons = buttons.edit;
+    //   leftButtonHandler = this.handleSave;
+    //   rightButtonHandler= this.handleCancel;
+    // }else if (this.state.status === 'Del'){
+    //   cardColor = "bg-warning";
+    //   activeButtons = buttons.delete;
+    //   leftButtonHandler = this.handleCancel;
+    //   rightButtonHandler = this.handleConfirm;
+    // }
     const { location, search, searchResults} = this.state;
   
     const hotelSearchResults = this.state.searchResults.map(search => {
@@ -70,7 +120,20 @@ class Search extends Component {
               </Card.Body>
             </card>
           </CardDeck>
-        </div>
+          </div>
+      //   <div className="card-footer">
+      //   <div
+      //     className="btn-group d-flex btn-group-justified" role="group" aria-label="..." >
+      //     <button
+      //       type="button"
+      //       className={"btn w-100 " + activeButtons.leftButtonColor}
+      //       onClick={leftButtonHandler}>{activeButtons.leftButtonVal}</button>
+      //     <button type="button"
+      //       className={"btn w-100 " + activeButtons.rightButtonColor}
+      //       onClick={rightButtonHandler}>{activeButtons.rightButtonVal}</button>
+      //   </div>
+      // </div>
+      // </div>
       )
     }) 
 
