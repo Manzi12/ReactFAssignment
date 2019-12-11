@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     }
@@ -6,28 +6,48 @@
     color: #4286f4;
     margin-top: 30px;
     margin-bottom: 60px;
-    }
+    }*/
     div {
-    text-align: center;
+    align-content: center;
     width: 80%;
     margin: 0 auto;
     }
-    input {
-    width: 100%;
-    margin: 10px;
-    padding: 18px 10px;
-    border-radius: 4px;
-    border: 1px solid #4e5766;
-    box-shadow: 1px 0.5px #888888;
-    font-size: 18px;
-    }
-    button {
-    padding: 12px 10px;
-    width: 30%;
-    border-radius: 4px;
-    background-color: #4286f4;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 18px;
-    }
+ 
+ .col-sm-4{
+  padding: 50px 80px;
+}
+
+
+ .hotels {
+    padding: 10px;
+    margin-top: 0px;
+}
+
+.card-img-tag center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.card-body  {
+  word-break:break-all;
+  
+}
+
+.card-img-top {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.image-name {
+  align-content: center;
+
+}
+
+.card-center{
+  align-content: center;
+}
+
 

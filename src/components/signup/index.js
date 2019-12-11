@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
-import {withFirebase} from '../../config/firebase';
+import {withFirebase} from '../Firebase';
 import * as ROUTES from '../../routes';
+import {Button,Card,Form} from 'react-bootstrap';
 
 const initialState = {
+    firstname: '',
+    lastname:'',
     email: '',
     password: ''
 };
@@ -19,10 +22,11 @@ class SignUpForm extends Component {
     };
 
     onSubmit = event => {
-    const { email, password } = this.state;
+    const { firstname, lastname,email, password } = this.state;
 
-    this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, password)
+    this.props.firebase 
+     // .createUserWithEmailAndPassword(email, password)
+      .auth.createUserWithEmailAndPassword(email,password)
       .then(authUser => {
         this.setState({ ...initialState });
         this.props.history.push(ROUTES.SEARCH);
@@ -34,42 +38,76 @@ class SignUpForm extends Component {
 
     render(){
         const {
+            firstname,
+            lastname,
             email,
             password
         } = this.state;
 
-        return(
-            <div>
-            <form onSubmit = {this.onSubmit}>
-                 <input
+        return <Fragment>
+            <Card className="signoutsection">
+                <Card.Header>Sign Up</Card.Header>
+            <Card.Body>
+            <Form onSubmit = {this.onSubmit}>
+            <Form.Group>
+                 <Form.Label>First Name</Form.Label>
+                 <Form.Control
+                name = "firstname"
+                value={firstname}
+                type = "text"
+                placeholder = "First Name"
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
+
+                <Form.Group>
+                <Form.Label>Last Name</Form.Label>
+                 <Form.Control
+                name = "lastname"
+                value={lastname}
+                type = "text"
+                placeholder = "Last Name"
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
+
+                <Form.Group>
+                 <Form.Label>Email</Form.Label>
+                 <Form.Control
                 name = "email"
                 value={email}
-                onChange = {this.onChange}
                 type = "text"
                 placeholder = "Email Address"
-                />
-                 <input
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
+                 
+                <Form.Group>
+                 <Form.Label>Password</Form.Label>
+                 <Form.Control
                 name = "password"
                 value={password}
-                onChange = {this.onChange}
                 type = "password"
-                placeholder = "Password"
-                /> }
+                placeholder = "**********"
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
 
-                <button type="submit">Sign Up</button>
+                <Button variant="success" type="submit">Sign Up</Button>
 
-            </form>
-            </div>
-        );
+            </Form>
+            </Card.Body>
+            </Card>
+            </Fragment>
         
-    };
-};
+    }
+}
 
-const SignUp = withRouter(withFirebase(SignUpForm));
+const Register = withRouter(withFirebase(SignUpForm));
 
 const SignUpSite = () => (
     <Fragment>
-        <SignUp />
+        <Register />
     </Fragment>
 )
 

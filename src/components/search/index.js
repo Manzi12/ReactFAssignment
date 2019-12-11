@@ -8,7 +8,7 @@ const REACT_APP_API_KEY = "AxP4BGuBsV4xy1lNws9OIxvJ0ZpVxmXpu4yDz2lNmkXEAPNeIxO9u
 
 const initialState = {
   location:"",
-  hotels:"",
+  search:"",
   searchResults:[]
 };
 
@@ -22,8 +22,8 @@ class Search extends Component {
 
     handleSearch = event => {
         event.preventDefault();
-        const { location, hotels, searchResults} = this.state;
-        this.searchHotelsOnYelp(location,hotels,searchResults);
+        const { location, search, searchResults} = this.state;
+        this.searchHotelsOnYelp(location,search,searchResults);
     };
 
     handleChange = event => {
@@ -32,13 +32,13 @@ class Search extends Component {
 
     handleSubmit = event => {
        event.preventDefault();
-      const { location, hotels, searchResults} = this.state;
-      this.searchHotelsOnYelp(location,hotels,searchResults);
+      const { location, search, searchResults} = this.state;
+      this.searchHotelsOnYelp(location,search,searchResults);
     }
 
 
-    searchHotelsOnYelp = (location,hotels,searchResults) => {
-       axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${location}+IE&categories=${hotels}`,
+    searchHotelsOnYelp = (location,search,searchResults) => {
+       axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${location}+IE&categories=${search}`,
        {
            headers: {
         //Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
@@ -56,18 +56,18 @@ class Search extends Component {
   
   
   render() {
-    const { location, hotels, searchResults} = this.state;
+    const { location, search, searchResults} = this.state;
   
-    const hotelSearchResults = this.state.searchResults.map(hotel => {
+    const hotelSearchResults = this.state.searchResults.map(search => {
       return (
-        <div className="searchResults" key={hotel.id} >
+        <div className="searchResults" key={search.id} >
           <CardDeck>
             <card>
-              <Card.Img variant="top" src={hotel.image_url}/>
-              <Card.Body>
-                <Card.Title>{hotel.name}</Card.Title>
+              <Card.Img className="card-center" variant="top" src={search.image_url} height="100" width="100"/>
+              <Card.Body className="image-name">
+                <Card.Title>{search.name}</Card.Title>
               </Card.Body>
-              <Button href={hotel.url} variant="primary">View More Information</Button>
+              <Button href={search.url} variant="primary">View More Information</Button>
             </card>
           </CardDeck>
         </div>
@@ -82,8 +82,8 @@ class Search extends Component {
 
         <div className="background">
           <div class="container">
-          <h1>Google Hotels</h1>
-          <div><p>Search for a hotel in a city of your choice</p></div>
+          <h1>Google private Search</h1>
+          <div><p>Search for a Anything in a city of your choice</p></div>
         <div className="SearchHotelForm">
           <Form onSubmit={this.handleSubmit}>
             <Form.Row>
@@ -100,13 +100,13 @@ class Search extends Component {
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Hotels</Form.Label>
+                <Form.Label>Search categories</Form.Label>
                 <Form.Control
-                  name="hotels"
+                  name="search"
                   type="text"
-                  value={hotels}
+                  value={search}
                   onChange={this.handleChange}
-                  placeholder="hotels"
+                  placeholder="hotels,amusements,beaches,gyms,yoga,swimming"
                 />
               </Form.Group>
             </Form.Row>
@@ -115,14 +115,12 @@ class Search extends Component {
           </Form>
         </div>
 
-
+       
         {hotelSearchResults}
         
         </div>
         </div>
       </Fragment>
-
-    
 
     )
     

@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
-import fire from '../../config/fire';
-import { Link } from '@reach/router';
+import React, { Component,Fragment } from 'react';
+import {Jumbotron} from 'react-bootstrap';
+
 
 class Home extends Component{
-    logout(){
-        fire.auth().signOut();
-    }
-
-    
-
     render(){
-        return(
-            <div className="col-md-6">
-                <h1>YOU ARE HOME SAFE</h1>
-                <button onClick={this.logout}>logout</button>
-              <Link to = {`/search`}><button>search</button></Link>
-            </div>
-        )
+        if(this.props.authUser){
+            return <Fragment>
+                <Jumbotron>
+                <h1>Welcome back {this.authUser} to the search</h1>
+                <p>hope you find what you want from our site</p>
+                </Jumbotron>
+            </Fragment>
+        }
+
+
+
+        return <Fragment>
+            <Jumbotron>
+            <h1>Welcome to the private search</h1>
+                <p>please signup and login to use the search</p>
+            </Jumbotron>
+        </Fragment>
     }
+
 }
 
 export default Home;

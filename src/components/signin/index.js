@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import {withFirebase} from '../../config/firebase';
+import {withFirebase} from '../Firebase';
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from '../../routes';
+import './signin.css';
+import {Form,Button,Card} from 'react-bootstrap';
 
 
 const initialState = {
@@ -12,19 +14,8 @@ const initialState = {
 class SignIn extends Component {
     constructor(props){
         super(props);
-        this.login = this.login.bind(this);
-        this.onChange = this.onChange.bind(this);
         this.state = {...initialState};
     }
-
-
-    // login(e){
-    //     e.preventDefault();
-    //     firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then((u) =>{
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });
-    // }
 
     onChange = event => {
         this.setState({[event.target.name]: event.target.value})
@@ -34,7 +25,8 @@ class SignIn extends Component {
         const {email,password} = this.state;
 
         this.props.firebase
-        .doSignInWithEmailAndPassword(email,password)
+        //.signInWithEmailAndPassword(email,password)
+        .auth.signInWithEmailAndPassword(email, password)
         .then( () => {
             this.setState({...initialState});
             this.props.history.push(ROUTES.SEARCH);
@@ -51,34 +43,39 @@ class SignIn extends Component {
             password
         } = this.state;
 
-        return(
-            <div>
-                <h1>Sign in</h1>
-                <p>enjoy our private search</p>
-
-            
-            <form onSubmit = {this.onSubmit}>
-                 <input
+        return <Fragment>
+            <Card class="signinsection">
+                <Card.Header>Sign in</Card.Header>
+            <Card.Body>
+            <Form onSubmit = {this.onSubmit}>
+                <Form.Group>
+                 <Form.Label>Email</Form.Label>
+                 <Form.Control
                 name = "email"
                 value={email}
-                onChange = {this.onChange}
                 type = "text"
                 placeholder = "Email Address"
-                />
-                 <input
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
+                 
+                <Form.Group>
+                 <Form.Label>Password</Form.Label>
+                 <Form.Control
                 name = "password"
                 value={password}
-                onChange = {this.onChange}
                 type = "password"
-                placeholder = "Password"
-                />
+                placeholder = "**********"
+                onChange = {this.onChange}>
+                </Form.Control>
+                </Form.Group>
 
-                <button type="submit">Sign In</button>
+                <Button type="submit">Sign In</Button>
 
-            </form>
-
-            </div>
-        );
+            </Form>
+            </Card.Body>
+            </Card>
+            </Fragment>
         
     }
 }

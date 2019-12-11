@@ -1,46 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
-import fire from './config/fire';
-import Home from './components/home';
-import SignIn from './components/signin';
+import {withFirebase} from '../src/components/Firebase';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navigation from '../src/components/navigation';
 
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state={
-      user:{}
+      authUser:null
     }
-  }
+  };
 
   componentDidMount(){
-    this.authListener();
-  }
-
-  authListener(){
-    fire.auth().onAuthStateChanged((user) => {
-      console.log(user);
-      if(user){
-        this.setState({user});
-        //localStorage.setItem('user', user.uid);
-      }else {
-        this.setState({user: null});
-        //localStorage.removeItem('user');
-      }
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+      authUser ? this.setState({authUser}) : this.setState({authUser : null});
     });
+    console.log("The user is : " + this.state.authUser)
   }
 
+componentWillUnmount(){
+  this.listener();
+}
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Welcome to Our Private Search</h1>
-          {this.state.user ? (<Home />) : (<SignIn />)}
-        </header>
-      </div>
+      <Router>
+        <div><Navigation authUser={this.state.authUser}/></div>
+      </Router>
+     
     );
   }
 }
 
-export default App;
+export default withFirebase (App);
