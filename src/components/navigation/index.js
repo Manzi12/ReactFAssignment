@@ -21,8 +21,10 @@ class Navigation extends Component {
         <Navbar bg="success" variant="primary" fixed="top">
               <Navbar.Brand >The Private Search</Navbar.Brand>
             <Nav className="mr-auto">
-              <NavLink to={ROUTES.HOME}>Home</NavLink>
-              <NavLink to={ROUTES.SEARCH}>Search</NavLink>
+              <NavLink activeClassName="active" to={ROUTES.HOME}>Home</NavLink>
+              </Nav>
+              <Nav>
+              <NavLink activeClassName="active" to={ROUTES.SEARCH}>Search</NavLink>
             </Nav>
             <Nav className="ml-auto">
               <SignOut />

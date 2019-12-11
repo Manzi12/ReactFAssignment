@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Col } from "react-bootstrap";
 import './search.css'
-import buttons from "../config/buttonsConfig";
+//import buttons from "../config/buttonsConfig";
 import axios from 'axios';
 import { Form,CardDeck,Card,Button} from "react-bootstrap";
 
