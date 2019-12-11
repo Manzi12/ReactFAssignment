@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import {withFirebase} from '../Firebase';
+import './signup.css';
 import * as ROUTES from '../../routes';
 import {Button,Card,Form} from 'react-bootstrap';
 
@@ -45,13 +46,13 @@ class SignUpForm extends Component {
         } = this.state;
 
         return <Fragment>
-            <Card className="signoutsection">
+            <Card>
                 <Card.Header>Sign Up</Card.Header>
-            <Card.Body>
+            <Card.Body className="background">
             <Form onSubmit = {this.onSubmit}>
             <Form.Group>
-                 <Form.Label>First Name</Form.Label>
-                 <Form.Control
+                 <Form.Label className="label">First Name</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "firstname"
                 value={firstname}
                 type = "text"
@@ -61,8 +62,8 @@ class SignUpForm extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                <Form.Label>Last Name</Form.Label>
-                 <Form.Control
+                <Form.Label className="label">Last Name</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "lastname"
                 value={lastname}
                 type = "text"
@@ -72,8 +73,8 @@ class SignUpForm extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                 <Form.Label>Email</Form.Label>
-                 <Form.Control
+                 <Form.Label className="label">Email</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "email"
                 value={email}
                 type = "text"
@@ -83,8 +84,8 @@ class SignUpForm extends Component {
                 </Form.Group>
                  
                 <Form.Group>
-                 <Form.Label>Password</Form.Label>
-                 <Form.Control
+                 <Form.Label className="label">Password</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "password"
                 value={password}
                 type = "password"

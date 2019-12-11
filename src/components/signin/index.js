@@ -46,11 +46,11 @@ class SignIn extends Component {
         return <Fragment>
             <Card class="signinsection">
                 <Card.Header>Sign in</Card.Header>
-            <Card.Body>
+            <Card.Body className="background">
             <Form onSubmit = {this.onSubmit}>
                 <Form.Group>
-                 <Form.Label>Email</Form.Label>
-                 <Form.Control
+                 <Form.Label className="label">Email</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "email"
                 value={email}
                 type = "text"
@@ -60,8 +60,8 @@ class SignIn extends Component {
                 </Form.Group>
                  
                 <Form.Group>
-                 <Form.Label>Password</Form.Label>
-                 <Form.Control
+                 <Form.Label className="label">Password</Form.Label>
+                 <Form.Control className="placeholder"
                 name = "password"
                 value={password}
                 type = "password"

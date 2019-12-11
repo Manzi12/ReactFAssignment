@@ -63,11 +63,11 @@ class Search extends Component {
         <div className="searchResults" key={search.id} >
           <CardDeck>
             <card>
-              <Card.Img className="card-center" variant="top" src={search.image_url} height="100" width="100"/>
+              <Card.Img variant="top" src={search.image_url} height="100" width="100"/>
               <Card.Body className="image-name">
                 <Card.Title>{search.name}</Card.Title>
+                <Button href={search.url} variant="primary">View More Information</Button>
               </Card.Body>
-              <Button href={search.url} variant="primary">View More Information</Button>
             </card>
           </CardDeck>
         </div>
@@ -83,30 +83,30 @@ class Search extends Component {
         <div className="background">
           <div class="container">
           <h1>Google private Search</h1>
-          <div><p>Search for a Anything in a city of your choice</p></div>
+          <p>Search for a Anything in a city of your choice</p>
         <div className="SearchHotelForm">
           <Form onSubmit={this.handleSubmit}>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>City</Form.Label>
-                <Form.Control
+                <Form.Label className="label">City</Form.Label>
+                <Form.Control className="placeholder"
                   name="location"
                   type="text"
                   value={location}
                   onChange={this.handleChange}
-                  placeholder="location"
+                  placeholder="london,dublin,waterford,washington,cork,califonia,galway,berlin"
                 />
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Search categories</Form.Label>
-                <Form.Control
+                <Form.Label className="label">Search Categories</Form.Label>
+                <Form.Control className="placeholder"
                   name="search"
                   type="text"
                   value={search}
                   onChange={this.handleChange}
-                  placeholder="hotels,amusements,beaches,gyms,yoga,swimming"
+                  placeholder="hotels,amusements,beaches,gyms,yoga,swimming,Arcades,Festivals,Education,Soccer"
                 />
               </Form.Group>
             </Form.Row>

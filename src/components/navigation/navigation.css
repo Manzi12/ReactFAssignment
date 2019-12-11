@@ -7,19 +7,14 @@
     justify-content:end;
 }
 
-.pageHeading h1 {
-    color: cornsilk;
-    text-align: center;
-    line-height: 80px;
-}
-
 .unselected {
     color: white;
-    margin: 10px;
+    margin-left: 10px;
 }
+
  
 .active {
-    color: black;
-    margin: 10px;
+    color: blue;
+    margin-left: 10px;
 
 }
